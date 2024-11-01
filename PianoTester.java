@@ -34,6 +34,34 @@ class PianoTester {
 	}
 
 	@Test
+	void testClickBoundry () {
+		// Pressing the boundry between two keys should only turn on one of them
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH-Piano.BLACK_KEY_WIDTH/2, 0));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH) ^ _receiver.isKeyOn(Piano.START_PITCH+1));
+	}
+
+	@Test
+	void KeyBounds () {
+		// corner of left white keys turns it on
+		_mouseListener.mousePressed(makeMouseEvent(0, 0));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH));
+		_mouseListener.mouseReleased(makeMouseEvent(0, 0));
+		// corner of black key turns in on
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH - Piano.BLACK_KEY_WIDTH/2, 0));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH+1));
+		_mouseListener.mouseReleased(makeMouseEvent(Piano.WHITE_KEY_WIDTH - Piano.BLACK_KEY_WIDTH/2, 0));
+		// corner of middle white key turns it on
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH, Piano.BLACK_KEY_HEIGHT));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH+2));
+		_mouseListener.mouseReleased(makeMouseEvent(Piano.WHITE_KEY_WIDTH, Piano.BLACK_KEY_HEIGHT));
+		// corner of right white key turns it on
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH*2, Piano.BLACK_KEY_HEIGHT));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH+4));
+		_mouseListener.mouseReleased(makeMouseEvent(Piano.WHITE_KEY_WIDTH*2, Piano.BLACK_KEY_HEIGHT));
+	}
+
+
+	@Test
 	void testDragWithinKey () {
 		// Test that pressing and dragging the mouse *within* the same key
 		// should cause the key to be turned on only once, not multiple times.

@@ -68,7 +68,9 @@ public class PianoMouseListener extends MouseAdapter {
 	public void mouseReleased (MouseEvent e) {
 		// set all the keys to off
 		for(Key key: _keys){
-			key.play(false);
+			if (key.getIsOn()){
+				key.play(false);
+			}
 		}
 	}
 }

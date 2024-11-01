@@ -81,76 +81,36 @@ public class Piano extends JPanel {
 	private void makeKeys () {
 		//black key
 		int[] blkXCoords = new int[] {
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH + BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH + BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2
-		};
+			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2, WHITE_KEY_WIDTH + BLACK_KEY_WIDTH/2,
+			WHITE_KEY_WIDTH + BLACK_KEY_WIDTH/2, WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2};
+
 		int[] blkYCoords = new int[] {
-			0,
-			0,
-			BLACK_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT
-		};
+			0, 0, BLACK_KEY_HEIGHT,	BLACK_KEY_HEIGHT};
 
 		// left white key
 		int[] leftWXCoords = new int[] {
-			0,
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH,
-			WHITE_KEY_WIDTH,
-			0
-		};
+			0, WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,	WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
+			WHITE_KEY_WIDTH, WHITE_KEY_WIDTH, 0};
+
 		int[] leftWYCoords = new int[] {
-			0,
-			0,
-			BLACK_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT,
-			WHITE_KEY_HEIGHT,
-			WHITE_KEY_HEIGHT
-		};
+			0, 0, BLACK_KEY_HEIGHT, BLACK_KEY_HEIGHT, WHITE_KEY_HEIGHT,	WHITE_KEY_HEIGHT};
 
 		// right white key
 		int[] rightWXCoords = new int[] {
-			0,
-			BLACK_KEY_WIDTH/2,
-			BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH,
-			WHITE_KEY_WIDTH,
-			0
-		};
+			0, BLACK_KEY_WIDTH/2, BLACK_KEY_WIDTH/2, WHITE_KEY_WIDTH, WHITE_KEY_WIDTH, 0};
+
 		int[] rightWYCoords = new int[] {
-			BLACK_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT,
-			0,
-			0,
-			WHITE_KEY_HEIGHT,
-			WHITE_KEY_HEIGHT
-		};
+			BLACK_KEY_HEIGHT, BLACK_KEY_HEIGHT,	0, 0, WHITE_KEY_HEIGHT,	WHITE_KEY_HEIGHT};
 
 		// middle white key
 		int[] middleWXCoords = new int[] {
-			0,
-			0,
-			BLACK_KEY_WIDTH/2,
-			BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
-			WHITE_KEY_WIDTH,
-			WHITE_KEY_WIDTH
-		};
+			0, 0, BLACK_KEY_WIDTH/2, BLACK_KEY_WIDTH/2,	WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2,
+			WHITE_KEY_WIDTH - BLACK_KEY_WIDTH/2, WHITE_KEY_WIDTH, WHITE_KEY_WIDTH};
+
 		int[] middleWYCoords = new int[] {
-			WHITE_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT,
-			0,
-			0,
-			BLACK_KEY_HEIGHT,
-			BLACK_KEY_HEIGHT,
-			WHITE_KEY_HEIGHT
-		};
-		// left, middle, right
+			WHITE_KEY_HEIGHT, BLACK_KEY_HEIGHT, BLACK_KEY_HEIGHT,
+			0, 0, BLACK_KEY_HEIGHT, BLACK_KEY_HEIGHT, WHITE_KEY_HEIGHT};
+
 
 		String[] octave = {"left", "middle", "right", "left", "middle", "middle", "right"};
 		int pitch = START_PITCH;
@@ -173,9 +133,6 @@ public class Piano extends JPanel {
 				}
 			}
 		}
-
-
-		
 	}
 
 	public int[] shiftArray(int[] inputArray, int key){
