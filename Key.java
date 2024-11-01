@@ -45,9 +45,6 @@ public class Key {
 	 */
 	public void play (boolean isOn) {
 		try {
-
-			System.out.println(_pitch);
-
 			// Some MIDI technicalities; don't worry too much about it.
 			ShortMessage myMsg = new ShortMessage();
 			final int VELOCITY = 93;
