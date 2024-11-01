@@ -39,8 +39,39 @@ class PianoTester {
 		// should cause the key to be turned on only once, not multiple times.
 		// Use makeMouseEvent and TestReceiver.getKeyOnCount.
 		// TODO complete me
+
+		// click to turn the first key on
+		_mouseListener.mousePressed(makeMouseEvent(0, 0));
+		// check that the key was turned on
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH));
+		// drag the mouse within the key
+		_mouseListener.mouseDragged(makeMouseEvent(10, 10));
+		// check that the key only turned on once
+		assertTrue(1==_receiver.getKeyOnCount(Piano.START_PITCH));
+
+		
+		// click to turn the first key on
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH, 0));
+		// check that the key was turned on
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH + 1));
+		// drag the mouse within the key
+		_mouseListener.mouseDragged(makeMouseEvent(Piano.WHITE_KEY_WIDTH+ 10, 10));
+		// check that the key only turned on once
+		assertTrue(1==_receiver.getKeyOnCount(Piano.START_PITCH + 1));
 	}
 
-	// TODO write at least 3 more tests!
-	// ...
+	@Test
+	void testMouseRelease () {
+		// Pressing the mouse should cause the key to turn off
+		// test with the first white key
+		_mouseListener.mousePressed(makeMouseEvent(0, 0));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH));
+		_mouseListener.mouseReleased(makeMouseEvent(0, 0));
+		assertTrue(! _receiver.isKeyOn(Piano.START_PITCH));
+		// test with the first black key
+		_mouseListener.mousePressed(makeMouseEvent(Piano.WHITE_KEY_WIDTH, 0));
+		assertTrue(_receiver.isKeyOn(Piano.START_PITCH + 1));
+		_mouseListener.mouseReleased(makeMouseEvent(Piano.WHITE_KEY_WIDTH, 0));
+		assertTrue(! _receiver.isKeyOn(Piano.START_PITCH + 1));
+	}
 }
