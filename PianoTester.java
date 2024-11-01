@@ -89,7 +89,7 @@ class PianoTester {
 	}
 
 	@Test
-	void testMouseRelease () {
+	void testMousePressAndRelease () {
 		// Pressing the mouse should cause the key to turn off
 		// test with the first white key
 		_mouseListener.mousePressed(makeMouseEvent(0, 0));
